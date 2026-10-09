@@ -23,3 +23,10 @@ Flattened dicts are convenient for config loading, diffing, and serialization to
 ## Edge case you will hit
 
 If a real key contains the separator string, it cannot round-trip. `flatten({"a.b": 1})` yields `{"a.b": 1}` and `unflatten` of that produces `{"a": {"b": 1}}`. Pick a separator that cannot appear in your keys. There is no escaping mechanism, by design — escaping adds complexity and ambiguity that this library declines to take on.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
