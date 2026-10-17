@@ -1,6 +1,6 @@
 [project]
 name = "flatten-dict"
-version = "0.1.0"
+version = "0.1.1"
 description = "Flatten and restore nested mappings with a configurable separator."
 requires-python = ">=3.10"
 dependencies = []
